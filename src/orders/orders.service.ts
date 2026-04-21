@@ -1,13 +1,16 @@
 import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { customAlphabet } from 'nanoid';
+import { randomBytes } from 'crypto';
 import { Order, OrderDocument } from './order.schema';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { ProductsService } from '../products/products.service';
 import { EmailService } from '../email/email.service';
 
-const nanoid = customAlphabet('ABCDEFGHJKLMNPQRSTUVWXYZ23456789', 8);
+const ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+function generateId(): string {
+  return Array.from(randomBytes(8), (b) => ALPHABET[b % ALPHABET.length]).join('');
+}
 
 @Injectable()
 export class OrdersService {
@@ -42,7 +45,7 @@ export class OrdersService {
     const total = subtotal + tax;
 
     const order = await this.orderModel.create({
-      orderNumber: `ORD-${nanoid()}`,
+      orderNumber: `ORD-${generateId()}`,
       status: 'paid',
       customer: dto.customer,
       items: resolvedItems,
