@@ -2,15 +2,15 @@
   "version": 2,
   "builds": [
     {
-      "src": "src/lambda.ts",
+      "src": "dist/serverless.js",
       "use": "@vercel/node",
-      "config": { "includeFiles": ["src/**"] }
+      "config": { "includeFiles": ["dist/**"] }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "src/lambda.ts"
+      "dest": "/dist/serverless.js"
     }
   ]
 }
