@@ -1,9 +1,10 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
-let cachedApp: ReturnType<typeof import('express')> | null = null;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let cachedApp: any = null;
 
-async function createApp() {
+async function createApp(): Promise<any> {
   if (cachedApp) return cachedApp;
 
   const app = await NestFactory.create(AppModule, { logger: ['error', 'warn'] });
@@ -25,5 +26,5 @@ async function createApp() {
 
 export default async function handler(req: any, res: any) {
   const expressApp = await createApp();
-  expressApp(req, res);
+  return expressApp(req, res);
 }
