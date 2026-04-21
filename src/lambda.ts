@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
@@ -25,6 +26,11 @@ async function createApp(): Promise<any> {
 }
 
 export default async function handler(req: any, res: any) {
-  const expressApp = await createApp();
-  return expressApp(req, res);
+  try {
+    const expressApp = await createApp();
+    return expressApp(req, res);
+  } catch (err: any) {
+    console.error('Lambda bootstrap error:', err);
+    res.status(500).json({ bootstrapError: err?.message, stack: err?.stack?.split('\n').slice(0, 8) });
+  }
 }
