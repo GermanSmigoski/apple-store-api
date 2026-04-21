@@ -58,16 +58,213 @@ const Order = model<IOrder>('Order', OrderSchema);
 // ─── Seed data ────────────────────────────────────────────────────────────────
 
 const SEED = [
-  { slug:'macbook-pro-14-m3-pro', name:'MacBook Pro 14"', tagline:'Supercharged by M3 Pro.', description:'MacBook Pro with M3 Pro delivers breakthrough performance. With up to 18 hours of battery life and a Liquid Retina XDR display, it redefines what a pro laptop can do.', price:199900, images:['https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=80'], category:'mac', featured:true, specs:{'Chip':'Apple M3 Pro','CPU':'11-core','GPU':'14-core','Memory':'18GB','Storage':'512GB SSD','Display':'14.2" Liquid Retina XDR','Battery':'Up to 18h'}, stock:30 },
-  { slug:'macbook-air-13-m2', name:'MacBook Air 13"', tagline:'Strikingly thin. Surprisingly powerful.', description:'The redesigned MacBook Air with M2 is incredibly thin and delivers remarkable performance with up to 18 hours of battery life.', price:109900, images:['https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800&q=80'], category:'mac', featured:false, specs:{'Chip':'Apple M2','CPU':'8-core','GPU':'8-core','Memory':'8GB','Storage':'256GB SSD','Display':'13.6" Liquid Retina','Battery':'Up to 18h'}, stock:45 },
-  { slug:'iphone-15-pro', name:'iPhone 15 Pro', tagline:'Titanium. So strong. So light. So Pro.', description:'iPhone 15 Pro features titanium design, A17 Pro chip, and 5x optical zoom. The most powerful iPhone ever made.', price:99900, images:['https://images.unsplash.com/photo-1695048133142-1a20484429be?w=800&q=80'], category:'iphone', featured:true, specs:{'Chip':'A17 Pro','Display':'6.1" Super Retina XDR','Camera':'48MP | 12MP Ultra Wide | 5x Telephoto','Storage':'128GB','Battery':'Up to 23h'}, stock:60 },
-  { slug:'iphone-15', name:'iPhone 15', tagline:'A total powerhouse.', description:'iPhone 15 features the Dynamic Island, 48MP camera, A16 Bionic chip, and USB-C with up to 26 hours of battery life.', price:79900, images:['https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=800&q=80'], category:'iphone', featured:false, specs:{'Chip':'A16 Bionic','Display':'6.1" Super Retina XDR','Camera':'48MP | 12MP Ultra Wide','Storage':'128GB','Connector':'USB-C'}, stock:80 },
-  { slug:'ipad-pro-12-m2', name:'iPad Pro 12.9"', tagline:'Impossibly thin. Incredibly powerful.', description:'iPad Pro with M2 chip and Liquid Retina XDR display. Wi-Fi 6E, Apple Pencil hover, and blazing fast performance.', price:109900, images:['https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&q=80'], category:'ipad', featured:false, specs:{'Chip':'Apple M2','Display':'12.9" Liquid Retina XDR','Storage':'128GB','Connectivity':'Wi-Fi 6E','Face ID':'Yes'}, stock:25 },
-  { slug:'airpods-pro-2nd-gen', name:'AirPods Pro', tagline:'Adaptive Audio. Now playing.', description:'AirPods Pro with H2 chip feature Adaptive Audio, 2x more ANC, and personalized Spatial Audio for an immersive listening experience.', price:24900, images:['https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=800&q=80'], category:'airpods', featured:true, specs:{'Chip':'Apple H2','Noise Cancellation':'Active','Battery':'Up to 6h (30h with case)','Water Resistance':'IPX4','Connectivity':'Bluetooth 5.3'}, stock:100 },
-  { slug:'airpods-3rd-gen', name:'AirPods (3rd gen)', tagline:'Contoured comfort. Dynamic sound.', description:'AirPods 3rd generation with Spatial Audio, Adaptive EQ, and MagSafe Charging Case for up to 30 hours total listening time.', price:16900, images:['https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?w=800&q=80'], category:'airpods', featured:false, specs:{'Chip':'Apple H1','Battery':'Up to 6h (30h with case)','Water Resistance':'IPX4','Charging':'MagSafe'}, stock:90 },
-  { slug:'apple-watch-series-9', name:'Apple Watch Series 9', tagline:'Smarter. Brighter. Mightier.', description:'Apple Watch Series 9 with S9 chip, Double Tap gesture, and the brightest always-on display ever on Apple Watch.', price:39900, images:['https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=800&q=80'], category:'watch', featured:false, specs:{'Chip':'Apple S9','Display':'Always-On Retina LTPO OLED','Health':'ECG | Blood Oxygen | Heart Rate','Battery':'Up to 18h','Water':'50 meters'}, stock:40 },
-  { slug:'magsafe-charger', name:'MagSafe Charger', tagline:'Perfectly aligned. Instantly charged.', description:'MagSafe Charger connects magnetically to iPhone for faster wireless charging up to 15W with a flexible 1m cable.', price:3900, images:['https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&q=80'], category:'accessories', featured:false, specs:{'Compatibility':'iPhone 12+','Power':'Up to 15W','Cable':'1m','Connector':'USB-C'}, stock:200 },
-  { slug:'apple-pencil-2nd-gen', name:'Apple Pencil (2nd gen)', tagline:'The most capable Apple Pencil yet.', description:'Apple Pencil 2nd generation with magnetic attach, wireless charging, pixel-perfect precision, and Double Tap to switch tools.', price:12900, images:['https://images.unsplash.com/photo-1561154464-82e9adf32764?w=800&q=80'], category:'accessories', featured:false, specs:{'Compatibility':'iPad Pro (3rd gen+), iPad Air (4th gen+)','Charging':'Wireless MagSafe','Latency':'9ms','Double Tap':'Switch tools'}, stock:70 },
+  {
+    slug: 'etiopia-yirgacheffe-natural',
+    name: 'Etiopía Yirgacheffe',
+    tagline: 'El café que huele a jazmín y sabe a durazno.',
+    description: 'Un natural de proceso lento de la región de Yirgacheffe, considerada la cuna del café. Este lote proviene de la familia Dukamo, que cultiva en las alturas de Kochere a más de 1.950 metros. Cada cereza se seca al sol por 30 días sobre camas elevadas, desarrollando una dulzura frutal única.',
+    price: 189000,
+    images: ['https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=800&q=80'],
+    category: 'africa',
+    featured: true,
+    specs: {
+      'Origen': 'Etiopía · Yirgacheffe, Kochere',
+      'Altitud': '1.950 – 2.100 msnm',
+      'Proceso': 'Natural (secado en camas elevadas)',
+      'Tueste': 'Ligero',
+      'Notas': 'Durazno, jazmín, té negro, miel de abeja',
+      'Productor': 'Familia Dukamo',
+      'Cosecha': '2024',
+      'Historia': 'Los Dukamo llevan tres generaciones en estas laderas. Cuando los visité por primera vez, me recibieron con un café preparado en jebena — la ceremonia tradicional etíope. Ese primer sorbo cambió todo lo que creía saber sobre café.'
+    },
+    stock: 40
+  },
+  {
+    slug: 'kenya-aa-kirinyaga',
+    name: 'Kenia AA Kirinyaga',
+    tagline: 'Acidez vibrante. Fruta negra y vino.',
+    description: 'Lote AA del Monte Kenia, procesado en la cooperativa Ngariama. El varietal SL28 y SL34 cultivado en los suelos volcánicos ricos en fósforo del Condado de Kirinyaga produce una de las tazas más complejas de África oriental.',
+    price: 215000,
+    images: ['https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=800&q=80'],
+    category: 'africa',
+    featured: true,
+    specs: {
+      'Origen': 'Kenia · Condado de Kirinyaga',
+      'Altitud': '1.700 – 1.900 msnm',
+      'Proceso': 'Lavado doble fermentación',
+      'Tueste': 'Ligero-Medio',
+      'Notas': 'Grosella negra, vino tinto, tamarindo, azúcar negra',
+      'Varietal': 'SL28, SL34',
+      'Cooperativa': 'Ngariama Farmers',
+      'Historia': 'El sistema de doble fermentación keniano es único en el mundo. En Kirinyaga lo vi de cerca: cerezas seleccionadas a mano, pulpadas en el día, fermentadas 24 horas, lavadas en canales de agua limpia. Un proceso de una precisión obsesiva.'
+    },
+    stock: 30
+  },
+  {
+    slug: 'colombia-huila-washed',
+    name: 'Colombia Huila',
+    tagline: 'Caramelo, manzana roja, chocolate suizo.',
+    description: 'Micro-lote de la finca El Paraíso, en las montañas del Macizo Colombiano. Don Rodrigo García, tercera generación caficultor, selecciona cada cereza en su punto exacto de maduración. Un lavado clásico que saca lo mejor del varietal Caturra.',
+    price: 165000,
+    images: ['https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80'],
+    category: 'latinoamerica',
+    featured: true,
+    specs: {
+      'Origen': 'Colombia · Huila, Macizo Colombiano',
+      'Altitud': '1.750 – 1.950 msnm',
+      'Proceso': 'Lavado',
+      'Tueste': 'Medio',
+      'Notas': 'Caramelo, manzana roja, chocolate con leche, nuez',
+      'Varietal': 'Caturra, Castillo',
+      'Productor': 'Don Rodrigo García',
+      'Historia': 'Don Rodrigo me dijo algo que no olvidé: "El café malo se hace en la planta, el café bueno se hace en la mano." Recorre su finca todos los días, palpa las cerezas, huele las flores. La calidad no es accidente en El Paraíso.'
+    },
+    stock: 50
+  },
+  {
+    slug: 'guatemala-antigua-honey',
+    name: 'Guatemala Antigua',
+    tagline: 'Miel, especias, y un abrazo de cuerpo.',
+    description: 'Procesado en honey sobre las laderas del volcán Agua en Antigua, este café del productor Marcos Orozco combina la dulzura de un natural con la limpieza de un lavado. El resultado es una taza redonda, especiada y de cuerpo notable.',
+    price: 158000,
+    images: ['https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&q=80'],
+    category: 'latinoamerica',
+    featured: false,
+    specs: {
+      'Origen': 'Guatemala · Antigua, Sacatepéquez',
+      'Altitud': '1.500 – 1.700 msnm',
+      'Proceso': 'Honey (Yellow)',
+      'Tueste': 'Medio',
+      'Notas': 'Panela, cardamomo, ciruela, chocolate amargo',
+      'Varietal': 'Bourbon, Caturra',
+      'Productor': 'Marcos Orozco',
+      'Historia': 'El proceso honey de Marcos es particular: deja un 40% de mucílago sobre el grano y lo mueve a mano cuatro veces al día durante 18 días. Es laborioso, casi meditativo. Pero en taza, ese trabajo se siente.'
+    },
+    stock: 45
+  },
+  {
+    slug: 'peru-cusco-washed',
+    name: 'Perú Cusco',
+    tagline: 'Limpio, equilibrado, chocolate al vino.',
+    description: 'De las alturas de la comunidad Quechua de Yanatile, en el Valle de La Convención. Este lote lavado de la variedad Typica es un café de una limpieza excepcional y un equilibrio perfecto entre acidez y dulzura.',
+    price: 142000,
+    images: ['https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=800&q=80'],
+    category: 'latinoamerica',
+    featured: false,
+    specs: {
+      'Origen': 'Perú · Cusco, Valle de La Convención',
+      'Altitud': '1.600 – 1.900 msnm',
+      'Proceso': 'Lavado',
+      'Tueste': 'Ligero-Medio',
+      'Notas': 'Chocolate negro, uva, mandarina, azúcar rubia',
+      'Varietal': 'Typica, Bourbon',
+      'Comunidad': 'COCLA · Yanatile',
+      'Historia': 'La comunidad de Yanatile produce a 3.200 metros sobre el nivel del mar. Cuando llegamos a buscar el lote, tardamos 6 horas en 4x4 desde Cusco. Esos productores no tienen un supermercado cerca. Tienen café, y lo cuidan como un tesoro.'
+    },
+    stock: 35
+  },
+  {
+    slug: 'indonesia-sumatra-mandheling',
+    name: 'Sumatra Mandheling',
+    tagline: 'Tierra, cedro, chocolate oscuro.',
+    description: 'El icónico Mandheling de la región de Lintong en el norte de Sumatra. Procesado en húmedo (wet-hulled o Giling Basah), este método único indonesio produce un perfil terroso y de cuerpo excepcional que no encontrarás en ningún otro origen.',
+    price: 172000,
+    images: ['https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=800&q=80'],
+    category: 'asia',
+    featured: false,
+    specs: {
+      'Origen': 'Indonesia · Sumatra, Lintong',
+      'Altitud': '1.100 – 1.500 msnm',
+      'Proceso': 'Wet-Hulled (Giling Basah)',
+      'Tueste': 'Medio-Oscuro',
+      'Notas': 'Cedro, tabaco, chocolate amargo, tierra húmeda',
+      'Varietal': 'Sumatra Typica, Tim Tim',
+      'Historia': 'El Giling Basah es el método que hace al Sumatra inconfundible. El pergamino se retira del grano cuando todavía tiene 25-35% de humedad, creando esa textura única y ese perfil terroso que divide aguas. A mí me conquistó en la primera taza.'
+    },
+    stock: 25
+  },
+  {
+    slug: 'panama-geisha-boquete',
+    name: 'Panamá Geisha',
+    tagline: 'El café más elegante del mundo.',
+    description: 'El varietal Geisha de las alturas de Boquete, Chiriquí. El mismo origen que en 2004 cambió la industria del café especialidad para siempre. Este lote lavado de la Finca Lerida expresa la floritura y el jasmin que hicieron famoso a este varietal.',
+    price: 480000,
+    images: ['https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?w=800&q=80'],
+    category: 'latinoamerica',
+    featured: true,
+    specs: {
+      'Origen': 'Panamá · Boquete, Chiriquí',
+      'Altitud': '1.600 – 1.900 msnm',
+      'Proceso': 'Lavado',
+      'Tueste': 'Ligero',
+      'Notas': 'Jazmín, durazno blanco, bergamota, té de flores',
+      'Varietal': 'Geisha (Harar)',
+      'Finca': 'Finca Lerida',
+      'Historia': 'El Geisha es el varietal que le demostró al mundo que el café podía ser tan complejo como el mejor vino. La primera vez que lo cateé, pensé que alguien había puesto flores en mi taza. No hay otra experiencia igual en el mundo del café.'
+    },
+    stock: 15
+  },
+  {
+    slug: 'blend-buenos-aires',
+    name: 'Blend Buenos Aires',
+    tagline: 'Nuestro homenaje a la ciudad.',
+    description: 'Creado especialmente para espresso, este blend combina un Brazil Cerrado con un Colombia Huila en una proporción 60/40. El resultado es una base chocolatosa con acidez justa, ideal para cortado, latte o para tomar solo como los porteños.',
+    price: 128000,
+    images: ['https://images.unsplash.com/photo-1487790945753-f89b1a693d1d?w=800&q=80'],
+    category: 'blend',
+    featured: false,
+    specs: {
+      'Composición': 'Brazil Cerrado 60% + Colombia Huila 40%',
+      'Proceso': 'Lavado + Natural',
+      'Tueste': 'Medio-Oscuro',
+      'Notas': 'Chocolate con leche, avellana, dulce de leche, cuerpo cremoso',
+      'Ideal para': 'Espresso, cortado, latte',
+      'Historia': 'Este blend lo desarrollamos con una sola pregunta en mente: ¿qué café elegiría un porteño de toda la vida? Uno que te abrace, que sea redondo, que no moleste pero que tampoco sea aburrido. Creemos que lo logramos.'
+    },
+    stock: 80
+  },
+  {
+    slug: 'etiopia-guji-natural',
+    name: 'Etiopía Guji',
+    tagline: 'Frambuesa, rosa, vino blanco.',
+    description: 'De la zona de Guji en el sur de Etiopía, este natural de la cooperativa Shakiso Express es uno de los cafés más vibrantes que tuvimos en Origen. Notas de frambuesa fresca y rosa que evolucionan a vino blanco a medida que enfría.',
+    price: 198000,
+    images: ['https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&q=80'],
+    category: 'africa',
+    featured: false,
+    specs: {
+      'Origen': 'Etiopía · Guji, Shakiso',
+      'Altitud': '1.900 – 2.200 msnm',
+      'Proceso': 'Natural',
+      'Tueste': 'Ligero',
+      'Notas': 'Frambuesa, rosa, vino blanco, maracuyá',
+      'Cooperativa': 'Shakiso Express',
+      'Cosecha': '2024',
+      'Historia': 'Guji es la región que compite con Yirgacheffe por el trono etíope. Los cafés de Shakiso son más salvajes, más frutales, más expresivos. La primera vez que catamos este lote, todos en el equipo paramos y nos miramos: "¿Seguro que esto es café?"'
+    },
+    stock: 20
+  },
+  {
+    slug: 'colombia-nariño-washed',
+    name: 'Colombia Nariño',
+    tagline: 'Dulzura de panela, mandarina, limpieza total.',
+    description: 'Del extremo sur de Colombia, en las montañas que bordean Ecuador. Los cafés de Nariño crecen en uno de los terroirs más singulares del país: suelos volcánicos, temperaturas frías y una diferencia térmica día-noche que potencia el desarrollo del azúcar en la cereza.',
+    price: 155000,
+    images: ['https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=800&q=80'],
+    category: 'latinoamerica',
+    featured: false,
+    specs: {
+      'Origen': 'Colombia · Nariño, La Unión',
+      'Altitud': '1.800 – 2.100 msnm',
+      'Proceso': 'Lavado',
+      'Tueste': 'Ligero',
+      'Notas': 'Panela, mandarina, pera, té verde',
+      'Varietal': 'Caturra, Colombia',
+      'Productor': 'Asociación ASPROCAFE',
+      'Historia': 'En Nariño hay una paradoja climática: está cerca del ecuador, pero la altitud y las corrientes del Pacífico hacen que las temperaturas bajen hasta 8°C de noche. Eso hace que la cereza madure lento, concentrando azúcares. El resultado es una dulzura que no necesita ser explicada.'
+    },
+    stock: 40
+  },
 ];
 
 // ─── Email ────────────────────────────────────────────────────────────────────
@@ -88,11 +285,11 @@ function buildInvoice(order: IOrder): string {
 <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 20px"><tr><td align="center">
 <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%">
   <tr><td style="background:#000;padding:24px 40px;border-radius:12px 12px 0 0;text-align:center">
-    <p style="color:#fff;font-size:22px;font-weight:600;margin:0;letter-spacing:-0.3px">Apple Store</p>
+    <p style="color:#fff;font-size:22px;font-weight:600;margin:0;letter-spacing:0.15em;font-family:Georgia,serif">ORIGEN</p>
   </td></tr>
   <tr><td style="background:#fff;padding:40px">
-    <h1 style="font-size:28px;font-weight:600;color:#1d1d1f;margin:0 0 8px;letter-spacing:-0.5px">Thank you, ${order.customer.name.split(' ')[0]}.</h1>
-    <p style="font-size:16px;color:#6e6e73;margin:0 0 32px">Your order has been confirmed.</p>
+    <h1 style="font-size:28px;font-weight:600;color:#1d1d1f;margin:0 0 8px;letter-spacing:-0.5px;font-family:Georgia,serif">Gracias, ${order.customer.name.split(' ')[0]}.</h1>
+    <p style="font-size:16px;color:#6e6e73;margin:0 0 32px">Tu pedido fue confirmado. Pronto lo estamos preparando.</p>
     <div style="background:#f5f5f7;border-radius:8px;padding:16px 20px;margin-bottom:32px">
       <p style="margin:0;font-size:12px;color:#6e6e73;text-transform:uppercase;letter-spacing:0.5px">Order Number</p>
       <p style="margin:4px 0 0;font-size:18px;font-weight:600;color:#1d1d1f;letter-spacing:1px">${order.orderNumber}</p>
@@ -117,7 +314,7 @@ function buildInvoice(order: IOrder): string {
     </div>
   </td></tr>
   <tr><td style="background:#f5f5f7;padding:24px;border-radius:0 0 12px 12px;text-align:center">
-    <p style="font-size:12px;color:#6e6e73;margin:0">Copyright &copy; ${new Date().getFullYear()} Apple Inc. &nbsp;·&nbsp; <span style="color:#aaa">Demo store — no real charges</span></p>
+    <p style="font-size:12px;color:#6e6e73;margin:0">Copyright &copy; ${new Date().getFullYear()} Origen Coffee &nbsp;·&nbsp; <span style="color:#aaa">Tienda demo — sin cobros reales</span></p>
   </td></tr>
 </table></td></tr></table></body></html>`;
 }
@@ -214,7 +411,7 @@ app.post('/api/orders', async (req, res) => {
     resend.emails.send({
       from: process.env.EMAIL_FROM ?? 'onboarding@resend.dev',
       to: customer.email,
-      subject: `Your Apple Store Order — ${order.orderNumber}`,
+      subject: `Tu pedido en Origen Coffee — ${order.orderNumber}`,
       html: buildInvoice(order as IOrder),
     }).catch(console.error);
 
