@@ -169,7 +169,7 @@ const SEED = [
     tagline: 'Tierra, cedro, chocolate oscuro.',
     description: 'El icónico Mandheling de la región de Lintong en el norte de Sumatra. Procesado en húmedo (wet-hulled o Giling Basah), este método único indonesio produce un perfil terroso y de cuerpo excepcional que no encontrarás en ningún otro origen.',
     price: 172000,
-    images: ['https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=800&q=80'],
+    images: ['https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=800&q=80'],
     category: 'asia',
     featured: false,
     specs: {
@@ -189,7 +189,7 @@ const SEED = [
     tagline: 'El café más elegante del mundo.',
     description: 'El varietal Geisha de las alturas de Boquete, Chiriquí. El mismo origen que en 2004 cambió la industria del café especialidad para siempre. Este lote lavado de la Finca Lerida expresa la floritura y el jasmin que hicieron famoso a este varietal.',
     price: 480000,
-    images: ['https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?w=800&q=80'],
+    images: ['https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=800&q=80'],
     category: 'latinoamerica',
     featured: true,
     specs: {
@@ -210,7 +210,7 @@ const SEED = [
     tagline: 'Nuestro homenaje a la ciudad.',
     description: 'Creado especialmente para espresso, este blend combina un Brazil Cerrado con un Colombia Huila en una proporción 60/40. El resultado es una base chocolatosa con acidez justa, ideal para cortado, latte o para tomar solo como los porteños.',
     price: 128000,
-    images: ['https://images.unsplash.com/photo-1487790945753-f89b1a693d1d?w=800&q=80'],
+    images: ['https://images.unsplash.com/photo-1521302080334-4bebac2763a6?w=800&q=80'],
     category: 'blend',
     featured: false,
     specs: {
@@ -264,6 +264,108 @@ const SEED = [
       'Historia': 'En Nariño hay una paradoja climática: está cerca del ecuador, pero la altitud y las corrientes del Pacífico hacen que las temperaturas bajen hasta 8°C de noche. Eso hace que la cereza madure lento, concentrando azúcares. El resultado es una dulzura que no necesita ser explicada.'
     },
     stock: 40
+  },
+  // ── Asia & Pacífico extras ──────────────────────────
+  {
+    slug: 'india-monsooned-malabar',
+    name: 'India Monsooned Malabar',
+    tagline: 'El café que el monzón transformó.',
+    description: 'Un proceso único en el mundo: los granos verdes se exponen durante 12 a 16 semanas a los vientos húmedos del Monzón en los almacenes abiertos de la costa de Malabar. El resultado es un café de cuerpo extraordinario, casi untuoso, con una acidez mínima y notas que recuerdan a las especias de la ruta de las Indias.',
+    price: 145000,
+    images: ['https://images.unsplash.com/photo-1504630083234-14187a9df0f5?w=800&q=80'],
+    category: 'asia',
+    featured: false,
+    specs: {
+      'Origen': 'India · Costa de Malabar, Karnataka',
+      'Altitud': '1.000 – 1.200 msnm',
+      'Proceso': 'Monsooned (exposición al monzón)',
+      'Tueste': 'Medio-Oscuro',
+      'Notas': 'Especias, madera de sándalo, chocolate, cuero suave',
+      'Varietal': 'Robusta, Arabica S795',
+      'Historia': 'Cuando la India era colonia británica, los granos viajaban en barcos de vela hacia Europa. Durante los meses de navegación, la humedad del océano transformaba el café completamente. Hoy ese proceso se replica intencionalmente en tierra. Es historia en cada taza.'
+    },
+    stock: 30
+  },
+  {
+    slug: 'timor-ermera-washed',
+    name: 'Timor-Leste Ermera',
+    tagline: 'Salvaje, profundo, inesperadamente limpio.',
+    description: 'De las montañas de Ermera, la región cafetera histórica de Timor-Leste. Este pequeño país de Asia-Pacífico tiene uno de los patrimonios cafeteros más antiguos de la región, con árboles que superan los 100 años y un varietal híbrido Timor único, resistente a enfermedades y con un perfil profundo y terroso.',
+    price: 162000,
+    images: ['https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800&q=80'],
+    category: 'asia',
+    featured: false,
+    specs: {
+      'Origen': 'Timor-Leste · Ermera',
+      'Altitud': '1.400 – 1.800 msnm',
+      'Proceso': 'Lavado',
+      'Tueste': 'Medio',
+      'Notas': 'Cacao, nuez de macadamia, ciruela seca, tabaco suave',
+      'Varietal': 'Híbrido Timor (HdT)',
+      'Cooperativa': 'Cooperativa Café Timor',
+      'Historia': 'Timor-Leste es uno de los últimos lugares del mundo donde el café crece silvestre bajo dosel de bosque. Los productores de Ermera no usan agroquímicos porque históricamente nunca los necesitaron. Es orgánico por convicción y por tradición.'
+    },
+    stock: 20
+  },
+  {
+    slug: 'myanmar-shan-natural',
+    name: 'Myanmar Shan',
+    tagline: 'Un origen raro. Una taza que sorprende.',
+    description: 'Del Planalto de Shan, a más de 1.300 metros en el corazón de Myanmar. Este natural de la cooperativa MTCO es uno de los cafés más difíciles de conseguir fuera del sudeste asiático. Procesado con técnicas aprendidas de consultores de Etiopía, combina la dulzura frutal del natural con un cuerpo particular del suelo arcilloso birmano.',
+    price: 178000,
+    images: ['https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=800&q=80'],
+    category: 'asia',
+    featured: true,
+    specs: {
+      'Origen': 'Myanmar · Planalto de Shan',
+      'Altitud': '1.200 – 1.500 msnm',
+      'Proceso': 'Natural',
+      'Tueste': 'Ligero-Medio',
+      'Notas': 'Mango, coco, caramelo suave, flores tropicales',
+      'Varietal': 'Catuai, Catimor',
+      'Cooperativa': 'Myanmar Shan Coffee (MTCO)',
+      'Historia': 'Myanmar lleva apenas 15 años desarrollando su industria de especialidad. Cuando llegamos a Shan, encontramos productores que aprendían a catar su propio café por primera vez. Hay algo muy hermoso en ese comienzo. Somos parte de esa historia.'
+    },
+    stock: 18
+  },
+  // ── Blends extras ────────────────────────────────────
+  {
+    slug: 'blend-mañanero',
+    name: 'Blend Mañanero',
+    tagline: 'El primer café del día, perfecto.',
+    description: 'Pensado para la prensa francesa o el filtro de la mañana. Este blend combina un Ethiopia Guji que aporta frutalidad y un Brazil Cerrado que da cuerpo y dulzura de fondo. Sin la acidez punzante del espresso, con toda la complejidad que necesita el arranque del día.',
+    price: 118000,
+    images: ['https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&q=80'],
+    category: 'blend',
+    featured: false,
+    specs: {
+      'Composición': 'Ethiopia Guji 45% + Brazil Cerrado 55%',
+      'Proceso': 'Natural + Natural',
+      'Tueste': 'Medio',
+      'Notas': 'Frutas rojas, chocolate con leche, miel, aroma floral',
+      'Ideal para': 'Prensa francesa, V60, Chemex, Moka',
+      'Historia': 'Este blend lo diseñamos después de meses de preguntas. La más frecuente que recibíamos era: "¿Qué café me recomendás para el desayuno?" Uno que no golpee, que acompañe, que dé ganas de tomarse otro. Esto es la respuesta.'
+    },
+    stock: 70
+  },
+  {
+    slug: 'blend-oscuro-de-origen',
+    name: 'Blend Oscuro de Origen',
+    tagline: 'Para los que toman el café bien negro.',
+    description: 'No es un blend oscuro por esconder defectos, sino por convicción. Sumatra Mandheling más un Brazil tostado a punto de segunda crack, con un perfil diseñado para quienes disfrutan el amargor limpio, el cuerpo denso y un final largo y ahumado. Sin acidez, sin concesiones.',
+    price: 132000,
+    images: ['https://images.unsplash.com/photo-1498804103079-a6351b050096?w=800&q=80'],
+    category: 'blend',
+    featured: false,
+    specs: {
+      'Composición': 'Sumatra Mandheling 50% + Brazil Cerrado 50%',
+      'Proceso': 'Wet-Hulled + Natural',
+      'Tueste': 'Oscuro',
+      'Notas': 'Cacao amargo, madera, tabaco, regaliz, final largo',
+      'Ideal para': 'Espresso largo, cold brew, moka, café de olla',
+      'Historia': 'Hay una generación de tomadores de café que se resiste a los "cafés de fruta y flores." No porque no entiendan la especialidad, sino porque simplemente prefieren el perfil clásico, intenso, negro. Este blend es para ellos. Sin apología.'
+    },
+    stock: 55
   },
 ];
 
