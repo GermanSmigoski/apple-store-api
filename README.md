@@ -1,98 +1,92 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Origen Coffee — API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Backend de la tienda **Origen Coffee**, un e-commerce de café de especialidad. Servidor Express serverless desplegado en Vercel, con MongoDB Atlas como base de datos y Resend para emails de factura.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Stack
 
-## Description
+| Capa | Tecnología |
+|---|---|
+| Runtime | Node.js 22 + TypeScript |
+| Framework | Express (serverless) |
+| Base de datos | MongoDB Atlas (Mongoose) |
+| Email | Resend |
+| Deploy | Vercel Serverless Functions |
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Endpoints
 
-## Project setup
+| Método | Ruta | Descripción |
+|---|---|---|
+| `GET` | `/api/health` | Estado del servidor |
+| `GET` | `/api/products` | Lista todos los productos |
+| `GET` | `/api/products?featured=true` | Solo productos destacados |
+| `GET` | `/api/products?category=africa` | Filtra por categoría |
+| `GET` | `/api/products/:idOrSlug` | Producto por ID o slug |
+| `POST` | `/api/orders` | Crea una orden y envía email de factura |
 
-```bash
-$ npm install
+### POST `/api/orders` — body esperado
+
+```json
+{
+  "customer": {
+    "name": "Juan García",
+    "email": "juan@ejemplo.com",
+    "address": {
+      "line1": "Av. Corrientes 1234",
+      "city": "Buenos Aires",
+      "state": "CABA",
+      "zip": "C1043",
+      "country": "AR"
+    }
+  },
+  "items": [
+    { "productId": "64abc123...", "quantity": 2 }
+  ]
+}
 ```
 
-## Compile and run the project
+## Variables de entorno
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+```env
+MONGODB_URI=mongodb+srv://usuario:contraseña@cluster.mongodb.net/?appName=Cluster0
+RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxx
+EMAIL_FROM=onboarding@resend.dev
+FRONTEND_URL=https://tu-frontend.vercel.app
+NODE_ENV=production
 ```
 
-## Run tests
+> **Nota sobre emails:** Con el plan gratuito de Resend sin dominio verificado, los emails solo pueden enviarse al correo registrado en la cuenta de Resend. Para enviar a cualquier destinatario verificar un dominio en [resend.com/domains](https://resend.com/domains).
+
+## Desarrollo local
 
 ```bash
-# unit tests
-$ npm run test
+# Instalar dependencias
+npm install
 
-# e2e tests
-$ npm run test:e2e
+# Crear .env con las variables de arriba
+# Compilar TypeScript
+npm run build
 
-# test coverage
-$ npm run test:cov
+# Probar localmente
+node -e "require('./dist/server').default.listen(3001, () => console.log('ok'))"
 ```
 
-## Deployment
+## Estructura
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+```
+src/
+├── server.ts       # App Express completa: schemas, seed, rutas, email
+└── serverless.ts   # Handler de entrada para Vercel
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+## Deploy
 
-## Resources
+El proyecto usa `vercel.json` para compilar `src/serverless.ts` con `@vercel/node`. Cada push a `main` dispara un deploy automático en Vercel.
 
-Check out a few resources that may come in handy when working with NestJS:
+El seed de productos corre automáticamente al primer request si la colección `products` está vacía: 15 cafés de especialidad con origen, proceso, notas de cata e historia del productor.
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+**Categorías:** `africa` · `latinoamerica` · `asia` · `blend`
 
-## Support
+## URLs
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+- **Producción:** https://api-eight-omega-81.vercel.app
+- **Frontend:** https://web-chi-snowy-99.vercel.app
